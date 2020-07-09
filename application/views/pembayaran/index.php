@@ -13,7 +13,7 @@
 
             <?= $this->session->flashdata('message'); ?>
 
-            <table class="table table-bordered table-striped text-gray-900">
+            <table class="table table-bordered table-striped text-gray-900" id="pembayaran">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -46,7 +46,7 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="" data-toggle="modal" data-target="#modal-edit<?= $pl['id']; ?>" class="badge badge-success">edit status</a>
+                                <a href=" <?= base_url('pembayaran/status/' . $pl['id']); ?>" class="badge badge-success">Edit Status</a>
                                 <a href=" <?= base_url('pembayaran/detail/' . $pl['id']); ?>" class="badge badge-warning">Rincian</a>
                             </td>
                         </tr>
@@ -60,42 +60,5 @@
 
 </div>
 <!-- /.container-fluid -->
-
-<?php $no = 0;
-foreach ($pelanggan as $pl) : $no++; ?>
-
-    <div id="modal-edit<?= $pl['id']; ?>" class="modal fade">
-        <div class="modal-dialog">
-            <form action="<?php echo site_url('pembayaran/status'); ?>" method="post">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="newdaftarLabel">Edit Status</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="hidden" readonly value="<?= $pl['id']; ?>" name="id" class="form-control">
-
-                        <div class="form-group">
-                            <label class=" col-form-label text-left">status</label>
-                            <div>
-                                <select name="status" id="status" class="form-control">
-                                    <option value=""><?= $pl['status'] ?></option>
-                                    <option value="aktif">aktif</option>
-                                    <option value="tidak aktif">tidak aktif</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-warning"><i class="icon-pencil5"></i> Edit</button>
-                        </div>
-            </form>
-        </div>
-    </div>
-    </div>
-<?php endforeach; ?>
-
 </div>
 <!-- End of Main Content -->

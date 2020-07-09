@@ -21,7 +21,7 @@
             foreach ($pelanggan as $pl) : $no++; ?>
 
                 <div class="row">
-                    <div class="col-lg-12 padding-250 text-right text-gray-900">
+                    <div class="col-lg-12 padding-250 text-right text-gray-900" id="ok">
 
                         <form action="<?= base_url('pelanggan/edit') ?>" method="post">
 

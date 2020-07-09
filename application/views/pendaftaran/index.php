@@ -17,7 +17,7 @@
                 <a href="<?= base_url('pendaftaran/form') ?>" class="btn btn-primary mb-3 ">+ Tambah Data Pendaftaran</a>
             </div>
 
-            <table class="table table-bordered table-striped text-gray-900">
+            <table class="table table-bordered table-striped text-gray-900" id="pendaftaran">
                 <thead>
                     <tr>
                         <th scope="col">No</th>

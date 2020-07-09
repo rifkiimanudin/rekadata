@@ -27,14 +27,14 @@ class Pembayaran extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function status()
+    public function status($id)
     {
-        $data['title'] = 'Data Pembayaran';
+        $data['title'] = 'Edit Status';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->model('Pelanggan_model', 'pelanggan');
 
-        $data['pelanggan'] = $this->pelanggan->getPelanggan();
+        $data['pelanggan'] = $this->pelanggan->getPelangganbyid($id);
 
         $this->form_validation->set_rules('status', 'Status', 'required');
 
@@ -42,7 +42,7 @@ class Pembayaran extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('pembayaran/index', $data);
+            $this->load->view('pembayaran/status', $data);
             $this->load->view('templates/footer');
         } else {
             $data = [

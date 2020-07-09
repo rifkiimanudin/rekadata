@@ -29,3 +29,69 @@ body {
 .sidebar-dark .sidebar-heading {
     color: rgba(255,255,255,.4) !important;
 }
+
+@media screen and (max-width:959px){
+    #container{
+        width   : 100%;
+    }
+    #left-column{
+        width   : 70%;
+    }
+    #right-column{
+        width   : 30%;
+        }
+    img{
+        width   : 100%;
+    }
+}
+/******************************************
+    MEDIA QUERIES ( Responsive )
+*******************************************/
+@media screen and (max-width:1080px){
+        .container{
+            width   : 100%;
+        }
+
+        .left{
+            width       : 25%;
+            background  : #D6CCFE;
+        }
+
+        .middle{
+            width   : 68%;
+            float   : right;
+
+        }
+
+        .right{
+            clear   : both;
+            padding : 1% 4%;
+            width: auto;
+            float   : none;
+            background  : #D6CCFE;
+        }
+}
+
+/* untuk ukuran layar 700px kebawah */
+@media screen and (max-width: 780px) {
+
+    .header, 
+    .footer{
+        text-align: center;
+    }
+    .left {
+        width: auto;
+        float: none;
+    }
+
+    .middle {
+        width: auto;
+        float: none;
+    }
+
+    .right {
+        width: auto;
+        float: none;
+    }
+
+}

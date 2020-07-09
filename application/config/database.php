@@ -70,6 +70,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
+
+//     'hostname' => 'localhost',
+//     'username' => 'id14168939_rekadata',
+//     'password' => 'g7AXXdYJ5%hl?JN*',
+//     'database' => 'id14168939_benet',
+
+// 'hostname' => 'localhost',
+// 'username' => 'root',
+// 'password' => '',
+// 'database' => 'rekadata',
+
 $active_group = 'default';
 $query_builder = true;
 
@@ -90,7 +101,7 @@ $db['default'] = array(
     'swap_pre' => '',
     'encrypt' => false,
     'compress' => false,
-    'stricton' => false,
+    'stricton' => true,
     'failover' => array(),
     'save_queries' => true
 );

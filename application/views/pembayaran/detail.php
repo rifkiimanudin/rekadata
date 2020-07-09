@@ -56,7 +56,7 @@
 
 
 
-        <table class="table table-bordered table-striped text-gray-900" id="example">
+        <table class="table table-bordered table-striped text-gray-900" id="detail">
 
             <thead>
                 <tr>

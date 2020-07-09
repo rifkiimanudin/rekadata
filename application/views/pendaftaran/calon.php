@@ -13,7 +13,7 @@
 
             <?= $this->session->flashdata('message'); ?>
 
-            <table class="table table-bordered table-striped text-gray-900">
+            <table class="table table-bordered table-striped text-gray-900" id="calonpelanggan">
                 <thead>
                     <tr>
                         <th scope="col">No</th>

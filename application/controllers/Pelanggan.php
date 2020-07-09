@@ -59,11 +59,8 @@ class Pelanggan extends CI_Controller
         $this->form_validation->set_rules('status', 'Status', 'required');
 
         if ($this->form_validation->run() ==  false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('pelanggan/index', $data);
-            $this->load->view('templates/footer');
+            $this->session->set_flashdata('error', "Data Gagal Di Edit");
+            redirect('pelanggan');
         } else {
             $data = [
                 'nama' => $this->input->post('nama'),

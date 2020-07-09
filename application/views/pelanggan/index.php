@@ -17,7 +17,7 @@
                 <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#datapelanggan">+ Tambah Data Pelanggan</a>
             </div>
 
-            <table class="table table-bordered table-striped text-gray-900">
+            <table class="table table-bordered table-striped text-gray-900" id="pelanggan">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -51,7 +51,7 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="" class="badge badge-success" data-toggle="modal" data-target="#modal-edit<?= $pl['id']; ?>">edit</a>
+                                <a href="" class="badge badge-success" data-toggle="modal" data-target="#modal-edit">edit</a>
 
                                 <a href="<?php echo site_url('pelanggan/hapus/' . $pl['id']); ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data <?= $pl['nama']; ?> ?');" class="badge badge-danger">hapus</a>
                             </td>
@@ -115,45 +115,50 @@
     </div>
 </div>
 
-<?php $no = 1;
-foreach ($pelanggan as $pl) : $no++; ?>
-    <div id="modal-edit<?= $pl['id']; ?>" class="modal fade">
-        <div class="modal-dialog">
-            <form action="<?php echo site_url('pelanggan/edit'); ?>" method="post">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="newdaftarLabel">Edit Data Paket</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <input type="hidden" readonly value="<?= $pl['id']; ?>" name="id" class="form-control">
-
-                    <div class="form-group">
-                        <select name="id_daftar" id="id_daftar" class="form-control" disabled>
-                            <option value="<?= $pl['id']; ?>"><?= $pl['nama']; ?></option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <select name="id_paket" id="id_paket" class="form-control">
-                            <option value="<?= $pl['id']; ?>"><?= $pkt['nama_paket']; ?></option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <select name="status" id="status" class="form-control">
-                            <option value="aktif">aktif</option>
-                            <option value="tidak aktif">tidak aktif</option>
-                        </select>
-                    </div>
+<?php foreach ($pelanggan as $pl) : ?>
+    <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="newdaftarModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newdaftarLabel">Tambah Data Pelanggan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                <form action="<?= base_url('pelanggan/edit'); ?>" method="post">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <select name="id_daftar" id="id_daftar" class="form-control">
+                                <option value="">Nama Pelanggan</option>
+                                <?php foreach ($daftarkan as $dfk) : ?>
+                                    <option value="<?= $dfk['id']; ?>"><?= $dfk['nama']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="id_paket" id="id_paket" class="form-control">
+                                <option value="">Pilih paket</option>
+                                <?php foreach ($paketkan as $pkt) : ?>
+                                    <option value="<?= $pkt['id']; ?>"><?= $pkt['nama_paket']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
+                        <div class="form-group">
+                            <select name="status" id="status" class="form-control">
+                                <option value="">Status</option>
+                                <option value="aktif">Aktif</option>
+                                <option value="tidak aktif">Tidak Aktif</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
     </div>
 <?php endforeach; ?>
