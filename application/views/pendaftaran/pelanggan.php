@@ -13,11 +13,7 @@
 
             <?= $this->session->flashdata('message'); ?>
 
-            <div align="right">
-                <a href="<?= base_url('pendaftaran/form') ?>" class="btn btn-primary mb-3 ">+ Tambah Data Pendaftaran</a>
-            </div>
-
-            <table class="table table-bordered table-striped text-gray-900" id="pendaftaran">
+            <table class="table table-bordered table-striped text-gray-900" id="calonpelanggan">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -26,9 +22,7 @@
                         <th scope="col">Tempat, Tanggal Lahir</th>
                         <th scope="col">No Hp</th>
                         <th scope="col">Alamat</th>
-                        <th scope="col">Survei</th>
-                        <th scope="col">Keterangan</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col">Action</th>
                     </tr>
                 <tbody>
                     <?php $i = 1; ?>
@@ -44,12 +38,8 @@
                                 <?= $df['kota']; ?>
                                 <?= $df['prov']; ?></td>
                             <td>
-                                <a href="<?= base_url('pendaftaran/survei/' . $df['id']); ?>" class="badge badge-warning">survei</a>
-                            </td>
-                            <td><?= $df['alasan']; ?></td>
-                            <td>
-                                <a href="<?= base_url('pendaftaran/edit/' . $df['id']); ?>" class="badge badge-success">edit</a>
-                                <a href="<?php echo site_url('pendaftaran/hapus/' . $df['id']); ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data <?= $df['nama']; ?> ?');" class="badge badge-danger">hapus</a>
+                                <a href="<?= base_url('pendaftaran/edit/' . $df['id']) ?>" class="badge badge-success">edit</a>
+                                <a href="<?php echo site_url('pendaftaran/hapus_calon/' . $df['id']); ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data <?= $df['nama']; ?> ?');" class="badge badge-danger">hapus</a>
                             </td>
                         </tr>
                         <?php $i++; ?>

@@ -17,13 +17,12 @@ class Pelanggan extends CI_Controller
 
         $data['pelanggan'] = $this->pelanggan->getPelanggan();
         $data['daftarkan'] = $this->db->get_where('tb_daftar', ['layak' => 1])->result_array();
-        $data['paketkan'] = $this->db->get('tb_paket')->result_array();
+        $data['paketkan'] = $this->db->get('tb_paket')->result_array();;
 
 
         $this->form_validation->set_rules('id_daftar', 'Daftar', 'required');
         $this->form_validation->set_rules('id_paket', 'Paket', 'required');
         $this->form_validation->set_rules('tanggal', 'Tanggal');
-        $this->form_validation->set_rules('status', 'Status', 'required');
 
         if ($this->form_validation->run() ==  false) {
             $this->load->view('templates/header', $data);
@@ -36,13 +35,13 @@ class Pelanggan extends CI_Controller
                 'id_daftar' => $this->input->post('id_daftar'),
                 'id_paket' => $this->input->post('id_paket'),
                 'tanggal' => date('Y-m-d'),
-                'status' => $this->input->post('status')
             ];
             $this->db->insert('tb_pelanggan', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pelanggan Telah di daftarkan</div>');
             redirect('pelanggan');
         }
     }
+
 
     public function edit()
     {
@@ -53,20 +52,16 @@ class Pelanggan extends CI_Controller
 
         $data['pelanggan'] = $this->pelanggan->getPelanggan();
 
-        $this->form_validation->set_rules('nama', 'Daftar', 'required');
-        $this->form_validation->set_rules('nama_paket', 'Paket', 'required');
-        $this->form_validation->set_rules('harga', 'Tanggal');
-        $this->form_validation->set_rules('status', 'Status', 'required');
+        $this->form_validation->set_rules('id_paket', 'Paket', 'required');
+        $this->form_validation->set_rules('tanggal', 'Tanggal');
 
         if ($this->form_validation->run() ==  false) {
             $this->session->set_flashdata('error', "Data Gagal Di Edit");
             redirect('pelanggan');
         } else {
             $data = [
-                'nama' => $this->input->post('nama'),
-                'nama_paket' => $this->input->post('nama_paket'),
-                'harga' => $this->input->post('harga'),
-                'status' => $this->input->post('status'),
+                'id_paket' => $this->input->post('id_paket'),
+                'tanggal' => date('Y-m-d'),
             ];
 
             $this->db->where('id', $_POST['id']);

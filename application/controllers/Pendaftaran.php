@@ -54,7 +54,9 @@ class Pendaftaran extends CI_Controller
                 'kec' => $this->input->post('kec'),
                 'kota' => $this->input->post('kota'),
                 'prov' => $this->input->post('prov'),
-                'layak' => 0
+                'layak' => 0,
+                'alasan' => "",
+                'status' => "tidak aktif",
             ];
             $this->db->insert('tb_daftar', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Ditambahkan!</div>');
@@ -144,22 +146,9 @@ class Pendaftaran extends CI_Controller
         }
     }
 
-    public function verifikasi($id)
-    {
-        $data['title'] = 'verifikasi';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-
-        $data['pendaftar'] = $this->db->get_where('tb_daftar', ['id' => $id])->result_array();
-
-        $this->db->set('layak', 1);
-        $this->db->where('id', $id);
-        $this->db->update('tb_daftar');
-        redirect('pendaftaran');
-    }
-
     public function calon_pelanggan()
     {
-        $data['title'] = 'Data Calon Pelanggan';
+        $data['title'] = 'Data Calon Pemesanan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['pendaftar'] = $this->db->get_where('tb_daftar', ['layak' => 1])->result_array();
@@ -168,6 +157,21 @@ class Pendaftaran extends CI_Controller
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('pendaftaran/calon', $data);
+        $this->load->view('templates/footer');
+    }
+
+
+    public function pelanggan()
+    {
+        $data['title'] = 'Data Pemesanan';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['pendaftar'] = $this->db->get_where('tb_daftar', ['layak' => 2])->result_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('pendaftaran/pelanggan', $data);
         $this->load->view('templates/footer');
     }
 

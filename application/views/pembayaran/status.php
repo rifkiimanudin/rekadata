@@ -15,9 +15,7 @@
     <?php $no = 0;
     foreach ($pelanggan as $pl) : $no++; ?>
 
-
         <form action="" method="post">
-
 
             <input type="hidden" readonly value="<?= $pl['id']; ?>" name="id" class="form-control">
 

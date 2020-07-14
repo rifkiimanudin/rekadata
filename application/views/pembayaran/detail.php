@@ -24,7 +24,7 @@
                 </div>
             <?php endforeach; ?>
 
-            <form action="<?= base_url('pembayaran/transaksi') ?>" method="post">
+            <form action="" method="post">
 
                 <div class="form-group row">
                     <input type="hidden" id="id" name="id" class="form-control">
@@ -33,7 +33,7 @@
                 <div class="form-group row">
                     <label class="col-sm-5 col-form-label text-left">Tanggal</label>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control" id="tanggal" name="tanggal" value="<?= date('d / M / y'); ?>">
+                        <input type="text" class="form-control" id="tanggal" name="tanggal" value="<?= date('Y-m-d'); ?>">
                     </div>
                 </div>
 
@@ -64,7 +64,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">Tanggal</th>
                     <th scope="col">Total Bayar</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Keterangan</th>
                     <th scope="col">Aksi</th>
                 </tr>
             </thead>
@@ -73,10 +73,10 @@
                 <?php foreach ($transaksi as $ts) : ?>
                     <tr>
                         <th scope="row"><?= $i; ?></th>
-                        <td><?= $ts['id_pelanggan']; ?></td>
+                        <td><?= $ts['id']; ?></td>
                         <td><?= $ts['tanggal']; ?></td>
-                        <td>Rp. <?= number_format($ts['harga'], 0, ',', '.'); ?></td>
-                        <td><?= $ts['status']; ?></td>
+                        <td><?= $ts['harga']; ?></td>
+                        <td><?= $ts['keterangan']; ?></td>
                         <td>
                             <a href="<?= base_url('pembayaran/hapus/' . $ts['id']); ?>" class="badge badge-danger">Hapus</a>
                         </td>

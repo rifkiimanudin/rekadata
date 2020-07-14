@@ -11,7 +11,7 @@ class User extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'My Profile';
+        $data['title'] = 'Pengguna';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->view('templates/header', $data);
@@ -24,7 +24,7 @@ class User extends CI_Controller
 
     public function edit()
     {
-        $data['title'] = 'Edit Profile';
+        $data['title'] = 'Ubah Pengguna';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->form_validation->set_rules('name', 'Full Name', 'required|trim');
@@ -73,7 +73,7 @@ class User extends CI_Controller
 
     public function changePassword()
     {
-        $data['title'] = 'Change Password';
+        $data['title'] = 'Ubah Password';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');

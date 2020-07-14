@@ -27,7 +27,6 @@
                         <th scope="col">No Hp</th>
                         <th scope="col">Alamat</th>
                         <th scope="col">Survei</th>
-                        <th scope="col">Keterangan</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 <tbody>
@@ -43,13 +42,9 @@
                                 <?= $df['kec']; ?>
                                 <?= $df['kota']; ?>
                                 <?= $df['prov']; ?></td>
+                            <td><?= $df['alasan']; ?>
                             <td>
-                                <a href="<?= base_url('pendaftaran/survei/' . $df['id']); ?>" class="badge badge-warning">survei</a>
-                            </td>
-                            <td><?= $df['alasan']; ?></td>
-                            <td>
-                                <a href="<?= base_url('pendaftaran/edit/' . $df['id']); ?>" class="badge badge-success">edit</a>
-                                <a href="<?php echo site_url('pendaftaran/hapus/' . $df['id']); ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data <?= $df['nama']; ?> ?');" class="badge badge-danger">hapus</a>
+                                <a href="<?= base_url('verifikasi/verifikasi_df/' . $df['id']); ?>" class="badge badge-success">Verifikasi Pendaftaran</a>
                             </td>
                         </tr>
                         <?php $i++; ?>

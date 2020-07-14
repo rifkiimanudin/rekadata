@@ -41,6 +41,7 @@
                                 <a href="<?= base_url('pendaftaran/edit/' . $df['id']) ?>" class="badge badge-success">edit</a>
                                 <a href="<?php echo site_url('pendaftaran/hapus_calon/' . $df['id']); ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data <?= $df['nama']; ?> ?');" class="badge badge-danger">hapus</a>
                             </td>
+
                         </tr>
                         <?php $i++; ?>
                     <?php endforeach; ?>

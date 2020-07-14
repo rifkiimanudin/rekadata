@@ -38,7 +38,6 @@
                             <td>Rp. <?= number_format($pl['harga'], 0, ',', '.'); ?></td>
                             <td><?= $pl['tanggal']; ?></td>
                             <td>
-
                                 <div class="custom-control custom-switch">
                                     <?php if ($pl['status'] == 'aktif') : ?>
                                         <input type="checkbox" class="custom-control-input" id="<?= $pl['nama']; ?>" onclick="document.getElementById('<?= $pl['nama']; ?>').innerHTML = 'Tidak Aktif'" checked>
@@ -50,9 +49,9 @@
                                     <?php endif; ?>
                                 </div>
                             </td>
-                            <td>
-                                <a href="" class="badge badge-success" data-toggle="modal" data-target="#modal-edit">edit</a>
 
+                            <td>
+                                <a href="" class="badge badge-success" data-toggle="modal" data-target="#modal-edit<?= $pl['id']; ?>">edit</a>
                                 <a href="<?php echo site_url('pelanggan/hapus/' . $pl['id']); ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data <?= $pl['nama']; ?> ?');" class="badge badge-danger">hapus</a>
                             </td>
                         </tr>
@@ -96,15 +95,6 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
-
-                    <div class="form-group">
-                        <select name="status" id="status" class="form-control">
-                            <option value="">Status</option>
-                            <option value="aktif">Aktif</option>
-                            <option value="tidak aktif">Tidak Aktif</option>
-                        </select>
-                    </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -115,50 +105,46 @@
     </div>
 </div>
 
-<?php foreach ($pelanggan as $pl) : ?>
-    <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="newdaftarModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="newdaftarLabel">Tambah Data Pelanggan</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="<?= base_url('pelanggan/edit'); ?>" method="post">
+<?php $no = 0;
+foreach ($pelanggan as $pl) : $no++; ?>
+
+    <div id="modal-edit<?= $pl['id']; ?>" class="modal fade">
+        <div class="modal-dialog">
+            <form action="<?php echo site_url('pelanggan/edit'); ?>" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="newdaftarLabel">Edit Data Pelanggan</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <div class="modal-body">
+                        <input type="hidden" readonly value="<?= $pl['id']; ?>" name="id" class="form-control">
+
                         <div class="form-group">
-                            <select name="id_daftar" id="id_daftar" class="form-control">
-                                <option value="">Nama Pelanggan</option>
-                                <?php foreach ($daftarkan as $dfk) : ?>
-                                    <option value="<?= $dfk['id']; ?>"><?= $dfk['nama']; ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                            <label>Nama Pelanggan</label>
+                            <div>
+                                <input type="text" name="id_daftar" autocomplete="id_daftar" value="<?= $pl['nama']; ?>" class="form-control" disabled>
+                            </div>
                         </div>
+
                         <div class="form-group">
                             <select name="id_paket" id="id_paket" class="form-control">
-                                <option value="">Pilih paket</option>
+                                <option value="<?= $pl['nama_paket']; ?>"><?= $pl['nama_paket']; ?></option>
                                 <?php foreach ($paketkan as $pkt) : ?>
                                     <option value="<?= $pkt['id']; ?>"><?= $pkt['nama_paket']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
-
-                        <div class="form-group">
-                            <select name="status" id="status" class="form-control">
-                                <option value="">Status</option>
-                                <option value="aktif">Aktif</option>
-                                <option value="tidak aktif">Tidak Aktif</option>
-                            </select>
-                        </div>
-
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-warning"><i class="icon-pencil5"></i> Edit</button>
                     </div>
-                </form>
-            </div>
+            </form>
         </div>
+    </div>
+    </div>
+    </div>
     </div>
 <?php endforeach; ?>

@@ -11,7 +11,7 @@ class Menu extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Menu Management';
+        $data['title'] = 'Menu';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['menu'] = $this->db->get('user_menu')->result_array();
@@ -31,10 +31,36 @@ class Menu extends CI_Controller
         }
     }
 
+    public function editmenu($id)
+    {
+        $data['title'] = 'Edit Menu';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['menu'] = $this->db->get('menu', ['id' => $id])->result_array();
+
+        $this->form_validation->set_rules('user_menu', 'Menu', 'required');
+
+        if ($this->form_validation->run() ==  false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('menu/edit_menu', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'menu' => $this->input->post('menu')
+            ];
+            $this->db->where('id', $_POST['id']);
+            $this->db->update('user_menu', $data);
+            $this->session->set_flashdata('sukses', "Data Berhasil Diedit");
+            redirect('admin/role');
+        }
+    }
+
 
     public function submenu()
     {
-        $data['title'] = 'Submenu Management';
+        $data['title'] = 'Submenu';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->model('Menu_model', 'menu');
 

@@ -11,7 +11,7 @@ class Paket extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Paket Be Net';
+        $data['title'] = 'Data Paket';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['paket'] = $this->db->get('tb_paket')->result_array();

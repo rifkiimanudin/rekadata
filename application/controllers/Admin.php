@@ -75,4 +75,43 @@ class Admin extends CI_Controller
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Access Changed!</div>');
     }
+
+    public function edit($id)
+    {
+        $data['title'] = 'Edit Status';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['role'] = $this->db->get('user_role', ['id' => $id])->result_array();
+
+        $this->form_validation->set_rules('role', 'Role', 'required');
+
+        if ($this->form_validation->run() ==  false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/edit', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'role' => $this->input->post('role')
+            ];
+            $this->db->where('id', $_POST['id']);
+            $this->db->update('user_role', $data);
+            $this->session->set_flashdata('sukses', "Data Berhasil Diedit");
+            redirect('admin/role');
+        }
+    }
+
+    public function hapus($id)
+    {
+        if ($id == "") {
+            $this->session->set_flashdata('error', "Data Anda Gagal Di Hapus");
+            redirect('admin/role');
+        } else {
+            $this->db->where('id', $id);
+            $this->db->delete('user_role');
+            $this->session->set_flashdata('sukses', "Data Berhasil Dihapus");
+            redirect('admin/role');
+        }
+    }
 }

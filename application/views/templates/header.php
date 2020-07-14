@@ -21,7 +21,6 @@
 
 <link href="<?= base_url('assets/'); ?>css/dataTables.bootstrap4.css" rel="stylesheet">
 <link href="<?= base_url('assets/'); ?>css/responsive.bootstrap4.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
 
 

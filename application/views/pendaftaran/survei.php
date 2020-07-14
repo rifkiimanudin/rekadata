@@ -65,22 +65,15 @@
 
 
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label text-left">Tidak Disetujui</label>
+                                <label class="col-sm-5 col-form-label text-left">Disetujui / Tidak Disetujui</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="alasan" placeholder="Alasan tidak disetujui" name="alasan" value="<?= $df['alasan']; ?>">
+                                    <input type="text" class="form-control" id="alasan" placeholder="Masukkan keterangan" name="alasan" value="<?= $df['alasan']; ?>">
                                 </div>
                             </div>
 
                             <a href="<?= base_url('pendaftaran') ?>" class="btn btn-danger">Kembali</a>
                             <button type="submit" class="btn btn-primary">Submit</button><br>
                             <hr>
-
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label text-left">Disetujui Pemasangan</label>
-                                <div class="col-sm-7">
-                                    <a href="<?= base_url('pendaftaran/verifikasi/' . $df['id'])  ?>" class="btn btn-success">verifikasi pendaftaran</a>
-                                </div>
-                            </div>
                         </form>
                     </div>
                 </div>
