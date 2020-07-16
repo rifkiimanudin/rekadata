@@ -31,29 +31,33 @@ class Menu extends CI_Controller
         }
     }
 
-    public function editmenu($id)
+    public function editmenu()
     {
-        $data['title'] = 'Edit Menu';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-
-        $data['menu'] = $this->db->get('menu', ['id' => $id])->result_array();
-
         $this->form_validation->set_rules('user_menu', 'Menu', 'required');
 
         if ($this->form_validation->run() ==  false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('menu/edit_menu', $data);
-            $this->load->view('templates/footer');
+            $this->session->set_flashdata('error', "Menu Gagal Di Edit");
+            redirect('menu');
         } else {
-            $data = [
+            $data = array(
                 'menu' => $this->input->post('menu')
-            ];
+            );
             $this->db->where('id', $_POST['id']);
             $this->db->update('user_menu', $data);
             $this->session->set_flashdata('sukses', "Data Berhasil Diedit");
-            redirect('admin/role');
+            redirect('menu');
+        }
+    }
+    public function delete_menu($id)
+    {
+        if ($id == "") {
+            $this->session->set_flashdata('error', "Data Anda Gagal Di Hapus");
+            redirect('menu');
+        } else {
+            $this->db->where('id', $id);
+            $this->db->delete('user_menu');
+            $this->session->set_flashdata('sukses', "Data Berhasil Dihapus");
+            redirect('menu');
         }
     }
 
@@ -88,6 +92,44 @@ class Menu extends CI_Controller
             ];
             $this->db->insert('user_sub_menu', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">SubMenu berhasil ditambahkan</div>');
+            redirect('menu/submenu');
+        }
+    }
+
+    public function editsubmenu()
+    {
+        $this->form_validation->set_rules('title', 'Title', 'required');
+        $this->form_validation->set_rules('menu_id', 'Menu', 'required');
+        $this->form_validation->set_rules('url', 'URL', 'required');
+        $this->form_validation->set_rules('icon', 'icon', 'required');
+
+        if ($this->form_validation->run() ==  false) {
+            $this->session->set_flashdata('error', "SubMenu Gagal Di Edit");
+            redirect('menu/submenu');
+        } else {
+            $data = array(
+                'title' => $this->input->post('title'),
+                'menu_id' => $this->input->post('menu_id'),
+                'url' => $this->input->post('url'),
+                'icon' => $this->input->post('icon'),
+                'is_active' => $this->input->post('is_active')
+            );
+            $this->db->where('id', $_POST['id']);
+            $this->db->update('user_sub_menu', $data);
+            $this->session->set_flashdata('sukses', "Data Berhasil Diedit");
+            redirect('menu/submenu');
+        }
+    }
+
+    public function delete_submenu($id)
+    {
+        if ($id == "") {
+            $this->session->set_flashdata('error', "Data Anda Gagal Di Hapus");
+            redirect('menu/submenu');
+        } else {
+            $this->db->where('id', $id);
+            $this->db->delete('user_sub_menu');
+            $this->session->set_flashdata('sukses', "Data Berhasil Dihapus");
             redirect('menu/submenu');
         }
     }

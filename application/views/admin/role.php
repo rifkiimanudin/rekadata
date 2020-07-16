@@ -28,9 +28,8 @@
                             <td><?= $r['role']; ?></td>
                             <td>
                                 <a href="<?= base_url('admin/roleaccess/') . $r['id']; ?>" class="badge badge-warning">access</a>
-                                <a href="<?= base_url('admin/edit/') . $r['id']; ?>" class="badge badge-success">Edit</a>
+                                <a href="" class="badge badge-success" data-toggle="modal" data-target="#editRole<?= $r['id']; ?>">edit</a>
                                 <a href="<?php echo site_url('admin/hapus/' . $r['id']); ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data <?= $r['role']; ?> ?');" class="badge badge-danger">hapus</a>
-
                             </td>
                         </tr>
                         <?php $i++; ?>
@@ -76,3 +75,33 @@
         </div>
     </div>
 </div>
+
+<?php $no = 0;
+foreach ($role as $r) : $no++; ?>
+    <div class="modal fade" id="editRole<?= $r['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="editRole" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editRole">Edit Role</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('admin/edit'); ?>" method="post">
+
+                    <input type="hidden" readonly value="<?= $r['id']; ?>" name="id" class="form-control">
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="role" name="role" value="<?= $r['role']; ?>">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>

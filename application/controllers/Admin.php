@@ -76,21 +76,13 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Access Changed!</div>');
     }
 
-    public function edit($id)
+    public function edit()
     {
-        $data['title'] = 'Edit Status';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-
-        $data['role'] = $this->db->get('user_role', ['id' => $id])->result_array();
-
         $this->form_validation->set_rules('role', 'Role', 'required');
 
         if ($this->form_validation->run() ==  false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('admin/edit', $data);
-            $this->load->view('templates/footer');
+            $this->session->set_flashdata('error', "Data Gagal Di Edit");
+            redirect('adminrole');
         } else {
             $data = [
                 'role' => $this->input->post('role')
