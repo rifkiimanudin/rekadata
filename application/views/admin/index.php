@@ -50,7 +50,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <a href="<?= base_url('pemesanan/pendaftaran') ?>" class="font-weight-bold text-primary text-uppercase mb-1">Data Pendaftaran</a>
+                                            <a href="<?= base_url('verifikasi/pendaftaran') ?>" class="font-weight-bold text-primary text-uppercase mb-1">Verifikasi Pendaftaran</a>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                         </div>
                                         <div class="col-auto">
@@ -67,7 +67,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <a href="<?= base_url('pemesanan/pelanggan') ?>" class="font-weight-bold text-primary text-uppercase mb-1">Data Pelanggan</a>
+                                            <a href="<?= base_url('verifikasi/pemesanan') ?>" class="font-weight-bold text-primary text-uppercase mb-1">Verifikasi Pemesanan</a>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                         </div>
                                         <div class="col-auto">
@@ -84,11 +84,11 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <a href="<?= base_url('pembayaran') ?>" class="font-weight-bold text-primary text-uppercase mb-1">Data Pembayaran</a>
+                                            <a href="<?= base_url('verifikasi/pengguna') ?>" class="font-weight-bold text-primary text-uppercase mb-1">Verifikasi Pengguna</a>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>

@@ -79,6 +79,7 @@
                         <td><?= $ts['keterangan']; ?></td>
                         <td>
                             <a href="<?= base_url('pembayaran/hapus/' . $ts['id']); ?>" class="badge badge-danger">Hapus</a>
+                            <a href="<?= base_url('pembayaran/kwitansi/' . $ts['id']); ?>" target="_blank" class="badge badge-success">Cetak Kwitansi</a>
                         </td>
                     </tr>
                     <?php $i++; ?>

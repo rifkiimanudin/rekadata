@@ -19,7 +19,14 @@
                                 <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Alamat Email" value="<?= set_value('email'); ?>">
                                 <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
-
+                            <div class="form-group">
+                                <select name="role_id" class="form-control" id="role_id">
+                                    <option value="1">Administrator</option>
+                                    <option value="2">Sales</option>
+                                    <option value="3">Kasir</option>
+                                </select>
+                                <?= form_error('role_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="password" class="form-control form-control-user" id="password1" name="password1" placeholder="Password">

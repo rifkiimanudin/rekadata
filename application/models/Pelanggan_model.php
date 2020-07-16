@@ -26,12 +26,17 @@ class Pelanggan_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
-    public function getTransaksibyid()
+    public function getTransaksi($id)
     {
-        $query = "SELECT tb_pelanggan.*, tb_transaksi.id, tb_transaksi.tanggal, tb_transaksi.keterangan 
-        FROM `tb_pelanggan` 
-        JOIN `tb_transaksi` 
-        ON `tb_pelanggan`.`id` = `tb_transaksi`.`id`";
+        $query = "SELECT `tb_transaksi`.`id`, `tb_transaksi`.`harga`, `tb_daftar`.`nama`, `tb_paket`.`nama_paket` 
+        FROM `tb_transaksi` 
+        LEFT JOIN `tb_pelanggan` 
+        ON `tb_transaksi`.`id_pelanggan` = `tb_pelanggan`.`id` 
+        LEFT JOIN `tb_daftar` 
+        ON `tb_pelanggan`.`id_daftar` = `tb_daftar`.`id` 
+        LEFT JOIN `tb_paket` 
+        ON `tb_pelanggan`.`id_paket` = `tb_paket`.id
+        WHERE tb_transaksi.id = $id";
         return $this->db->query($query)->result_array();
     }
 

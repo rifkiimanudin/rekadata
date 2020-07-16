@@ -13,35 +13,33 @@
 
             <?= $this->session->flashdata('message'); ?>
 
-
             <table class="table table-bordered table-striped text-gray-900">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">KTP</th>
                         <th scope="col">Nama</th>
-                        <th scope="col">Tempat, Tanggal Lahir</th>
-                        <th scope="col">No Hp</th>
-                        <th scope="col">Alamat</th>
-                        <th scope="col">Survei</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Konfirmasi Pengguna</th>
                     </tr>
                 <tbody>
                     <?php $i = 1; ?>
-                    <?php foreach ($pendaftar as $df) : ?>
+                    <?php foreach ($pengguna as $pg) : ?>
                         <tr>
                             <th scope="row"><?= $i; ?></th>
-                            <td><?= $df['ktp']; ?></td>
-                            <td><?= $df['nama']; ?></td>
-                            <td><?= $df['ttl']; ?></td>
-                            <td><?= $df['telp']; ?></td>
-                            <td><?= $df['alamat']; ?>
-                                <?= $df['kec']; ?>
-                                <?= $df['kota']; ?>
-                                <?= $df['prov']; ?></td>
-                            <td><?= $df['alasan']; ?>
+                            <td><?= $pg['name']; ?></td>
+                            <td><?= $pg['email']; ?></td>
+                            <td><?php
+                                if ($pg['role_id'] == 1) {
+                                    echo "Administrator";
+                                } else if ($pg['role_id'] == 2) {
+                                    echo "Sales";
+                                } else {
+                                    echo "Kasir";
+                                } ?></td>
                             <td>
-                                <a href="<?= base_url('verifikasi/verifikasi_df/' . $df['id']); ?>" class="badge badge-success">Verifikasi Pendaftaran</a>
+                                <a href="<?= base_url('verifikasi/verifikasi_pg/' . $pg['id'])  ?>" class="badge badge-success">Konfirmasi Pengguna</a>
+
                             </td>
                         </tr>
                         <?php $i++; ?>

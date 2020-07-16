@@ -23,6 +23,10 @@
 <link href="<?= base_url('assets/'); ?>css/responsive.bootstrap4.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
 
+<link rel="shortcut icon" href="<?= base_url('assets/'); ?>img/favicon.ico">
+
+<link href="<?= base_url('assets/'); ?>pdf/fpdf.php" rel="stylesheet">
+
 
 </head>
 

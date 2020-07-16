@@ -54,15 +54,15 @@ class Auth extends CI_Controller
                         redirect('user');
                     }
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Salah password!</div>');
                     redirect('auth');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">This email has not been activated!</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email tidak terdaftar!</div>');
                 redirect('auth');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email tidak terdaftar!</div>');
             redirect('auth');
         }
     }
@@ -76,11 +76,12 @@ class Auth extends CI_Controller
 
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
-            'is_unique' => 'This email has already registered!'
+            'is_unique' => 'Email telah tersedia! Silahkan masukkan email lain'
         ]);
-        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
-            'matches' => 'Password dont match!',
-            'min_length' => 'Password too short!'
+        $this->form_validation->set_rules('role_id', 'Role id', 'required|trim');
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|matches[password2]', [
+            'matches' => 'Password tidak sesuai!',
+            'min_length' => 'Password terlalu pendek!'
         ]);
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
@@ -96,14 +97,14 @@ class Auth extends CI_Controller
                 'email' => htmlspecialchars($email),
                 'image' => 'default.jpg',
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-                'role_id' => 2,
-                'is_active' => 1,
+                'role_id' => htmlspecialchars($this->input->post('role_id')),
+                'is_active' => 0,
                 'date_created' => time()
             ];
 
             $this->db->insert('user', $data);
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please activate your account</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun Berhasil Dibuat</div>');
             redirect('auth');
         }
     }
@@ -113,7 +114,7 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out!</div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kamu telah Logout!</div>');
         redirect('auth');
     }
 
@@ -130,8 +131,8 @@ class Auth extends CI_Controller
             redirect('auth');
         }
 
-        $this->form_validation->set_rules('password1', 'Password', 'trim|required|min_length[3]|matches[password2]');
-        $this->form_validation->set_rules('password2', 'Repeat Password', 'trim|required|min_length[3]|matches[password1]');
+        $this->form_validation->set_rules('password1', 'Password', 'trim|required|min_length[8]|matches[password2]');
+        $this->form_validation->set_rules('password2', 'Repeat Password', 'trim|required|min_length[8]|matches[password1]');
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Change Password';
@@ -150,7 +151,7 @@ class Auth extends CI_Controller
 
             $this->db->delete('user_token', ['email' => $email]);
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password has been changed! Please login.</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password Berhasil Diubah</div>');
             redirect('auth');
         }
     }
