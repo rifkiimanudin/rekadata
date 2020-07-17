@@ -8,7 +8,7 @@
                     <div class="p-5">
                         <div class="text-center">
                             <img src=<?= base_url('assets/img/ok.jpg') ?> width="100" class="rounded-circle">
-                            <h1 class="h4 text-gray-900 mb-4">Buat Akun</h1>
+                            <h1 class="h4 text-gray-900 mb-4"></h1>
                         </div>
                         <form class="user" method="post" action="<?= base_url('auth/registration'); ?>">
                             <div class="form-group">
@@ -20,7 +20,7 @@
                                 <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group">
-                                <select name="role_id" class="form-control" id="role_id">
+                                <select name="role_id" class="form-control-user col-12 text-gray-800" id="role_id">
                                     <option value="1">Administrator</option>
                                     <option value="2">Sales</option>
                                     <option value="3">Kasir</option>

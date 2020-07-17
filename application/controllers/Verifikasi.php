@@ -14,7 +14,7 @@ class Verifikasi extends CI_Controller
         $data['title'] = 'Verifikasi Pendaftaran';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        $data['pendaftar'] = $this->db->get_where('tb_daftar', ['layak' => 0])->result_array();
+        $data['pendaftar'] = $this->db->get_where('tb_daftar', ['layak' => 0, 'alasan' => "Disetujui"])->result_array();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -59,6 +59,7 @@ class Verifikasi extends CI_Controller
         $data['pendaftar'] = $this->db->get_where('tb_daftar', ['id' => $id])->result_array();
 
         $this->db->set('layak', 1);
+        $this->db->set('status', "tidak aktif");
         $this->db->where('id', $id);
         $this->db->update('tb_daftar');
         redirect('verifikasi/pendaftaran');

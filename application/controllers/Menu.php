@@ -98,10 +98,10 @@ class Menu extends CI_Controller
 
     public function editsubmenu()
     {
-        $this->form_validation->set_rules('title', 'Title', 'required');
-        $this->form_validation->set_rules('menu_id', 'Menu', 'required');
-        $this->form_validation->set_rules('url', 'URL', 'required');
-        $this->form_validation->set_rules('icon', 'icon', 'required');
+        $this->form_validation->set_rules('title', 'Title');
+        $this->form_validation->set_rules('menu_id', 'Menu');
+        $this->form_validation->set_rules('url', 'URL');
+        $this->form_validation->set_rules('icon', 'icon');
 
         if ($this->form_validation->run() ==  false) {
             $this->session->set_flashdata('error', "SubMenu Gagal Di Edit");
@@ -111,8 +111,7 @@ class Menu extends CI_Controller
                 'title' => $this->input->post('title'),
                 'menu_id' => $this->input->post('menu_id'),
                 'url' => $this->input->post('url'),
-                'icon' => $this->input->post('icon'),
-                'is_active' => $this->input->post('is_active')
+                'icon' => $this->input->post('icon')
             );
             $this->db->where('id', $_POST['id']);
             $this->db->update('user_sub_menu', $data);
