@@ -76,6 +76,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 //     'password' => 'g7AXXdYJ5%hl?JN*',
 //     'database' => 'id14168939_benet',
 
+// 'hostname' => 'db4free.net',
+// 'username' => 'rekadata_2020',
+// 'password' => 'Kampret6cm',
+// 'database' => 'benet_2020',
+
 // 'hostname' => 'localhost',
 // 'username' => 'root',
 // 'password' => '',
@@ -86,10 +91,10 @@ $query_builder = true;
 
 $db['default'] = array(
     'dsn'    => '',
-    'hostname' => 'localhost',
-    'username' => 'root',
-    'password' => '',
-    'database' => 'rekadata',
+    'hostname' => 'db4free.net',
+    'username' => 'rekadata_2020',
+    'password' => 'Kampret6cm',
+    'database' => 'benet_2020',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => false,
