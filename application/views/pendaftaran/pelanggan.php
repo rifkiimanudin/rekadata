@@ -19,8 +19,8 @@
                         <th scope="col">No</th>
                         <th scope="col">KTP</th>
                         <th scope="col">Nama</th>
-                        <th scope="col">Tempat, Tanggal Lahir</th>
                         <th scope="col">No Hp</th>
+                        <th scope="col">Email</th>
                         <th scope="col">Alamat</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -31,8 +31,8 @@
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $df['ktp']; ?></td>
                             <td><?= $df['nama']; ?></td>
-                            <td><?= $df['ttl']; ?></td>
                             <td><?= $df['telp']; ?></td>
+                            <td><?= $df['email']; ?></td>
                             <td><?= $df['alamat']; ?>
                                 <?= $df['kec']; ?>
                                 <?= $df['kota']; ?>

@@ -33,6 +33,7 @@ class Pendaftaran extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('ttl', 'Tempat tanggal lahir', 'required');
         $this->form_validation->set_rules('telp', 'telp', 'required');
+        $this->form_validation->set_rules('email', 'email', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
         $this->form_validation->set_rules('kec', 'kecamatan', 'required');
         $this->form_validation->set_rules('kota', 'Kota', 'required');
@@ -50,6 +51,7 @@ class Pendaftaran extends CI_Controller
                 'nama' => $this->input->post('nama'),
                 'ttl' => $this->input->post('ttl'),
                 'telp' => $this->input->post('telp'),
+                'email' => $this->input->post('email'),
                 'alamat' => $this->input->post('alamat'),
                 'kec' => $this->input->post('kec'),
                 'kota' => $this->input->post('kota'),
@@ -75,6 +77,7 @@ class Pendaftaran extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('ttl', 'Tempat tanggal lahir', 'required');
         $this->form_validation->set_rules('telp', 'telp', 'required');
+        $this->form_validation->set_rules('email', 'email', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
         $this->form_validation->set_rules('kec', 'kecamatan', 'required');
         $this->form_validation->set_rules('kota', 'Kota', 'required');
@@ -92,6 +95,7 @@ class Pendaftaran extends CI_Controller
                 'nama' => $this->input->post('nama'),
                 'ttl' => $this->input->post('ttl'),
                 'telp' => $this->input->post('telp'),
+                'email' => $this->input->post('email'),
                 'alamat' => $this->input->post('alamat'),
                 'kec' => $this->input->post('kec'),
                 'kota' => $this->input->post('kota'),

@@ -53,6 +53,12 @@
                                     <input type="text" class="form-control" id="telp" name="telp" value="<?= $df['telp']; ?>">
                                 </div>
                             </div>
+                            <div class=" form-group row">
+                                <label class="col-sm-2 col-form-label text-left">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="email" name="email" value="<?= $df['email']; ?>">
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label text-left">Alamat</label>
                                 <div class="col-sm-10">
