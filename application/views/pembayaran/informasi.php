@@ -111,30 +111,36 @@
                                     <img src="<?= base_url('assets/img/logo.png') ?>" style="width:100%; max-width:300px;">
                                 </td>
 
-                                <td>
-                                    ID Pelanggan : <?= $ts['id']; ?> <br>
-                                    Tanggal : <?= date('d F Y'); ?>
-                                </td>
                             </tr>
                         </table>
                 </td>
             </tr>
 
             <tr class="information">
-                <td colspan="2">
+                <td>
                     <table>
                         <tr>
                             <td>
-                                <?= $ts['alamat']; ?><br>
-                                <?= $ts['kec']; ?><br>
-                                <?= $ts['kota']; ?><br>
-                                <?= $ts['prov']; ?>
+                                ID Pelanggan <br>
+                                Nama <br>
+                                No Telepon <br>
+                                Email <br>
+                                Alamat <br>
                             </td>
-
                             <td>
+                                : <br>
+                                : <br>
+                                : <br>
+                                : <br>
+                                : <br>
+                            </td>
+                            <td>
+                                <?= $ts['id']; ?> <br>
                                 <?= $ts['nama']; ?><br>
                                 <?= $ts['telp']; ?><br>
-                                <?= $ts['email']; ?>
+                                <?= $ts['email']; ?><br>
+                                <?= $ts['alamat']; ?> <?= $ts['kec']; ?> <?= $ts['kota']; ?> <?= $ts['prov']; ?>
+
                             </td>
                         </tr>
                     </table>
@@ -143,27 +149,7 @@
 
             <tr class="heading">
                 <td>
-                    Metode Pembayaran
-                </td>
-
-                <td>
-                    Tunai
-                </td>
-            </tr>
-
-            <tr class="details">
-                <td>
-
-                </td>
-
-                <td>
-
-                </td>
-            </tr>
-
-            <tr class="heading">
-                <td>
-                    Nama Paket
+                    Memilih Paket
                 </td>
 
                 <td>
@@ -181,17 +167,10 @@
                 </td>
             </tr>
 
-            <tr class="total">
-                <td></td>
-
-                <td>
-                    Total : <?= $ts['harga']; ?> <br>
-                </td>
-            </tr>
 
             <tr class="item">
                 <td>
-                    Disetujui, <br><br>
+                    <br><br> Disetujui, <br><br><br>
                 </td>
             </tr>
             <tr>

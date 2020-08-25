@@ -104,6 +104,7 @@
         </div>
     </div>
 </div>
+</div>
 
 <?php $no = 0;
 foreach ($pelanggan as $pl) : $no++; ?>

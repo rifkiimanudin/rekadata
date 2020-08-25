@@ -14,6 +14,10 @@
 
             <?= $this->session->flashdata('message'); ?>
 
+            <div align="right">
+                <a href="<?= base_url('pengguna/form') ?>" class="btn btn-primary mb-3 ">+ Tambah Sales</a>
+            </div>
+
 
             <div>
             </div>

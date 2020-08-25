@@ -91,10 +91,10 @@ $query_builder = true;
 
 $db['default'] = array(
     'dsn'    => '',
-    'hostname' => 'db4free.net',
-    'username' => 'rekadata_2020',
-    'password' => 'Kampret6cm',
-    'database' => 'benet_2020',
+    'hostname' => 'localhost',
+    'username' => 'root',
+    'password' => '',
+    'database' => 'rekadata',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => false,

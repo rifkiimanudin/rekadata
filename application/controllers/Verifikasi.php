@@ -91,4 +91,12 @@ class Verifikasi extends CI_Controller
         $this->db->update('user');
         redirect('verifikasi/pengguna');
     }
+
+    public function pasang($id)
+    {
+
+        $data['pendaftar'] = $this->db->get_where('tb_daftar', ['id' => $id])->result_array();
+
+        $this->load->view('verifikasi/pasang', $data);
+    }
 }

@@ -104,7 +104,7 @@
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
                 <td colspan="2">
-                    <?php foreach ($transaksi as $ts) : ?>
+                    <?php foreach ($pendaftar as $ts) : ?>
                         <table>
                             <tr>
                                 <td class="title">
@@ -163,7 +163,7 @@
 
             <tr class="heading">
                 <td>
-                    Nama Paket
+                    Biaya Pasang
                 </td>
 
                 <td>
@@ -173,11 +173,11 @@
 
             <tr class="item">
                 <td>
-                    <?= $ts['nama_paket']; ?>
+
                 </td>
 
                 <td>
-                    <?= $ts['harga']; ?>
+                    Rp. 250.000
                 </td>
             </tr>
 
@@ -185,13 +185,13 @@
                 <td></td>
 
                 <td>
-                    Total : <?= $ts['harga']; ?> <br>
+                    Rp.250.000
                 </td>
             </tr>
 
             <tr class="item">
                 <td>
-                    Disetujui, <br><br>
+                    Disetujui, <br><br><br><br>
                 </td>
             </tr>
             <tr>
@@ -199,7 +199,7 @@
             </tr>
             <tr class="item">
                 <td>
-                    Kasir
+                    PT Rekadata Pratama Medianet
                 </td>
             </tr>
         </table>

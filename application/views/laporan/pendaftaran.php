@@ -14,17 +14,16 @@
             <?= $this->session->flashdata('message'); ?>
 
 
-            <table class="table table-bordered table-striped text-gray-900" id="pendaftaran">
+            <table class="table table-bordered table-striped text-gray-900" id="lap">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">KTP</th>
                         <th scope="col">Nama</th>
-                        <th scope="col">Tempat, Tanggal Lahir</th>
+                        <th scope="col">Email</th>
                         <th scope="col">No Hp</th>
                         <th scope="col">Alamat</th>
                         <th scope="col">Keterangan</th>
-                        <th scope="col">Aksi</th>
                     </tr>
                 <tbody>
                     <?php $i = 1; ?>
@@ -33,17 +32,13 @@
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $df['ktp']; ?></td>
                             <td><?= $df['nama']; ?></td>
-                            <td><?= $df['ttl']; ?></td>
+                            <td><?= $df['email']; ?></td>
                             <td><?= $df['telp']; ?></td>
                             <td><?= $df['alamat']; ?>
                                 <?= $df['kec']; ?>
                                 <?= $df['kota']; ?>
                                 <?= $df['prov']; ?></td>
                             <td><?= $df['alasan']; ?></td>
-                            <td>
-                                <a href="<?= base_url('pendaftaran/edit/' . $df['id']); ?>" class="badge badge-success">edit</a>
-                                <a href="<?php echo site_url('pendaftaran/hapus/' . $df['id']); ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data <?= $df['nama']; ?> ?');" class="badge badge-danger">hapus</a>
-                            </td>
                         </tr>
                         <?php $i++; ?>
                     <?php endforeach; ?>

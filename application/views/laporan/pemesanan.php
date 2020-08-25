@@ -22,7 +22,6 @@
                         <th scope="col">Harga</th>
                         <th scope="col">Tanggal</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Aksi</th>
                     </tr>
                 <tbody>
                     <?php $i = 1; ?>
@@ -44,11 +43,6 @@
                                         <p id="<?= $pl['nama']; ?>"></p>
                                     <?php endif; ?>
                                 </div>
-                            </td>
-
-                            <td>
-                                <a href="" class="badge badge-success" data-toggle="modal" data-target="#modal-edit<?= $pl['id']; ?>">edit</a>
-                                <a href="<?php echo site_url('pelanggan/hapus/' . $pl['id']); ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data <?= $pl['nama']; ?> ?');" class="badge badge-danger">hapus</a>
                             </td>
                         </tr>
                         <?php $i++; ?>

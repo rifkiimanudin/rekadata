@@ -22,6 +22,7 @@
                         <th scope="col">No Hp</th>
                         <th scope="col">Email</th>
                         <th scope="col">Alamat</th>
+                        <th scope="col">Biaya Pemasangan</th>
                         <th scope="col">Konfirmasi Pemesanan</th>
                     </tr>
                 <tbody>
@@ -38,8 +39,10 @@
                                 <?= $df['kota']; ?>
                                 <?= $df['prov']; ?></td>
                             <td>
+                                <a href="<?= base_url('verifikasi/pasang/' . $df['id']); ?>" target="_blank" class="badge badge-warning">cetak biaya pasang</a>
+                            </td>
+                            <td>
                                 <a href="<?= base_url('verifikasi/verifikasi_pm/' . $df['id'])  ?>" class="badge badge-success">Konfirmasi Pemesanan</a>
-
                             </td>
                         </tr>
                         <?php $i++; ?>

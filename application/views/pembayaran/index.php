@@ -19,7 +19,7 @@
                         <th scope="col">No</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Paket</th>
-                        <th scope="col">Jumlah Bayar</th>
+                        <th scope="col">Harga</th>
                         <th scope="col">Status</th>
                         <th scope="col">Aksi</th>
                     </tr>
@@ -48,6 +48,8 @@
                             <td>
                                 <a href=" <?= base_url('pembayaran/status/' . $pl['id']); ?>" class="badge badge-success">Edit Status</a>
                                 <a href=" <?= base_url('pembayaran/detail/' . $pl['id']); ?>" class="badge badge-warning">Rincian</a>
+                                <a href="<?= base_url('pembayaran/informasi/' . $pl['id']); ?>" target="_blank" class="badge badge-primary">Cetak Informasi Pembayaran</a>
+                                <a href=" <?= base_url('pembayaran/ubah/' . $pl['id']); ?>" class="badge badge-danger">Ubah Paket</a>
                             </td>
                         </tr>
                         <?php $i++; ?>

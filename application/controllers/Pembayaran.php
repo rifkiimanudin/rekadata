@@ -110,4 +110,14 @@ class Pembayaran extends CI_Controller
 
         $this->load->view('pembayaran/kwitansi', $data);
     }
+
+    public function informasi($id)
+    {
+
+        $this->load->model('Pelanggan_model', 'transaksi');
+
+        $data['transaksi'] = $this->transaksi->getTransaksi($id);
+
+        $this->load->view('pembayaran/informasi', $data);
+    }
 }

@@ -297,6 +297,52 @@
                         ]
                     });
                 });
+
+                $(document).ready(function() {
+                    $('#lap').dataTable({
+                        "lengthMenu": [5, 10, 15, 20, 25, 30, 35, 50, 75, 100],
+                        dom: 'Bfrtip',
+                        buttons: [{
+                                extend: 'excelHtml5',
+                                text: '<i class="fas fa-file-excel nav-icon"> Export Excel</i>',
+                                className: 'btn bg-gradient-success btn-sm text-black',
+                                exportOptions: {
+                                    columns: [0, 1, 2, 3, 4, 5, 6]
+                                }
+                            },
+                            {
+                                extend: 'print',
+                                text: '<i class="fas fa-print nav-icon"> Cetak Data</i>',
+                                className: 'btn bg-gradient-warning btn-sm text-black',
+                                exportOptions: {
+                                    columns: [0, 1, 2, 3, 4, 5, 6]
+                                },
+                                customize: function(win) {
+                                    $(win.document.body)
+                                        .css('font-size', '10pt')
+
+                                    $(win.document.body).find('table')
+                                        .addClass('compact')
+                                        .css('font-size', 'inherit');
+                                }
+                            }
+                        ],
+                        "responsive": true,
+                        "columnDefs": [{
+                                responsivePriority: 1,
+                                targets: 0
+                            },
+                            {
+                                responsivePriority: 2,
+                                targets: 1
+                            },
+                            {
+                                responsivePriority: 3,
+                                targets: 2
+                            }
+                        ]
+                    });
+                });
             </script>
 
             <script>

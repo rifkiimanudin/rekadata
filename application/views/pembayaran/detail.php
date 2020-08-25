@@ -71,7 +71,7 @@
             <tbody>
                 <?php $i = 1; ?>
                 <?php foreach ($transaksi as $ts) : ?>
-                    <tr>
+                    <try>
                         <th scope="row"><?= $i; ?></th>
                         <td><?= $ts['id']; ?></td>
                         <td><?= $ts['tanggal']; ?></td>
@@ -81,7 +81,7 @@
                             <a href="<?= base_url('pembayaran/hapus/' . $ts['id']); ?>" class="badge badge-danger">Hapus</a>
                             <a href="<?= base_url('pembayaran/kwitansi/' . $ts['id']); ?>" target="_blank" class="badge badge-success">Cetak Kwitansi</a>
                         </td>
-                    </tr>
+                    </try>
                     <?php $i++; ?>
                 <?php endforeach; ?>
             </tbody>
